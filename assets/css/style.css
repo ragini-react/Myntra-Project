@@ -7,13 +7,23 @@
 
 /* HEADER-SECTION */
 
+body {
+  max-width: 100%;
+}
+
 header {
   display: flex;
+  flex-wrap: wrap;
   background-color: #ffffff;
-  height: 80px;
+  min-height: 60px;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #a6a8ac;
+}
+
+header .hamburger-icon {
+  display: none;
+  padding-right: 20px;
 }
 
 .myntra-home {
@@ -23,10 +33,6 @@ header {
 
 .logo-container {
   margin-left: 4%;
-}
-
-.action-bar {
-  margin-right: 4%;
 }
 
 .navbar {
@@ -39,15 +45,16 @@ header {
   font-size: 14px;
   letter-spacing: 0.3px;
   color: #282c3f;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 28px 0;
-  border-bottom: 2px solid #fff;
+  padding: 10px 6px;
+  border-bottom: 4px solid transparent;
+  transition: all 200ms ease-in;
 }
 
 .navbar a:hover {
-  border-bottom: 4px solid #f54e77;
+  border-color: #f54e77;
 }
 
 .navbar a sup {
@@ -57,35 +64,36 @@ header {
 
 .search-bar {
   height: 40px;
-  min-width: 200px;
-  min-width: 30%;
+  min-width: 300px;
   display: flex;
   align-items: center;
 }
 
-.search-icon {
+.search-bar .search-icon {
   background-color: #f5f5f6;
   color: #696e79;
   font-weight: 300px;
-  border-radius: 4px 0 0 4px;
+  border-radius: 6px 0 0 6px;
   box-sizing: content-box;
   height: 20px;
   padding: 10px;
 }
 
-.search-input {
+.search-bar .search-input {
   background-color: #f5f5f6;
   color: #696e79;
   flex-grow: 1;
   height: 40px;
   border: 0;
-  border-radius: 0 4px 4px 0;
+  outline: none;
+  border-radius: 0 6px 6px 0;
 }
 
 .action-bar {
   display: flex;
   justify-content: space-evenly;
   min-width: 200px;
+  margin-right: 4%;
 }
 
 .action-container {
@@ -174,4 +182,57 @@ footer {
   display: flex;
   justify-content: space-between;
   margin: 50px 20px 20px 0;
+}
+
+@media screen and (width <= 1200px) {
+  nav.navbar {
+    justify-content: end;
+    min-width: unset;
+  }
+  header .search-bar {
+    max-width: 150px;
+    min-width: unset;
+  }
+  header .search-bar input.search-input::placeholder {
+    color: transparent;
+  }
+
+  header .action-bar {
+    min-width: 120px;
+    margin-right: 0;
+  }
+  header .action-bar .action-container span.action-name {
+    display: none;
+  }
+}
+@media screen and (width <= 992px) {
+  header .action-bar,
+  .search-bar {
+    display: none;
+  }
+
+  footer {
+    text-align: center;
+    border-top: 1px solid grey;
+  }
+
+  footer .footer-container {
+    flex-direction: column;
+    row-gap: 10px;
+    padding-bottom: 0;
+  }
+  footer .copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+}
+@media screen and (width <= 576px) {
+  nav.navbar {
+    display: none;
+  }
+  header .hamburger-icon {
+    display: block;
+  }
 }
